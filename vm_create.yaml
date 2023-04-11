@@ -3,9 +3,9 @@
   hosts: all
   tasks:
   - vmware_cluster_info:
-      hostname: '{{ vcenter_hostname }}'
-      username: '{{ vcenter_username }}'
-      password: '{{ vcenter_password }}'
+      hostname: '{{ lookup("env", "VMWARE_HOST") }}'
+      username: '{{ lookup("env", "VMWARE_USER") }}'
+      password: '{{ lookup("env", "VMWARE_PASSWORD") }}'
       datacenter: Konsalt-MESA
       validate_certs: no
     delegate_to: localhost
@@ -13,4 +13,4 @@
     
   - debug:
       var: cluster_info
-  
+ 
